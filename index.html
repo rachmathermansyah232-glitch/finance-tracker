@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Manajemen Keuangan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Aplikasi Manajemen Keuangan</h1>
+        
+        <!-- Total Saldo -->
+        <div class="balance-card">
+            <h2>Total Saldo</h2>
+            <div class="balance-amount" id="totalBalance">Rp 0</div>
+        </div>
+
+        <!-- Form Input Transaksi -->
+        <div class="input-section">
+            <h3>Tambah Transaksi</h3>
+            <form id="transactionForm">
+                <div class="form-group">
+                    <label for="itemName">Nama Barang:</label>
+                    <input type="text" id="itemName" required placeholder="Contoh: Makan Siang">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Jumlah Uang:</label>
+                    <input type="number" id="amount" required min="0" placeholder="Contoh: 50000">
+                </div>
+                <div class="form-group">
+                    <label for="category">Kategori:</label>
+                    <select id="category" required>
+                        <option value="">Pilih Kategori</option>
+                        <option value="Makanan">Makanan</option>
+                        <option value="Transportasi">Transportasi</option>
+                        <option value="Hiburan">Hiburan</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Tambah Transaksi</button>
+            </form>
+        </div>
+
+        <!-- Grafik Visual -->
+        <div class="chart-section">
+            <h3>Distribusi Pengeluaran</h3>
+            <canvas id="expenseChart" width="400" height="400"></canvas>
+        </div>
+
+        <!-- Daftar Riwayat Transaksi -->
+        <div class="transaction-section">
+            <h3>Riwayat Transaksi</h3>
+            <div class="controls">
+                <label for="sortOrder">Urutkan:</label>
+                <select id="sortOrder">
+                    <option value="newest">Terbaru</option>
+                    <option value="oldest">Terlama</option>
+                    <option value="amount-desc">Terbesar</option>
+                    <option value="amount-asc">Terkecil</option>
+                </select>
+            </div>
+            <div class="transaction-list" id="transactionList">
+                <p class="no-transactions">Belum ada transaksi</p>
+            </div>
+        </div>
+
+        <!-- Ringkasan Bulanan -->
+        <div class="monthly-summary">
+            <h3>Ringkasan Bulanan</h3>
+            <div class="summary-cards">
+                <div class="summary-card">
+                    <span class="summary-label">Total Pemasukan</span>
+                    <span class="summary-value income" id="monthlyIncome">Rp 0</span>
+                </div>
+                <div class="summary-card">
+                    <span class="summary-label">Total Pengeluaran</span>
+                    <span class="summary-value expense" id="monthlyExpense">Rp 0</span>
+                </div>
+                <div class="summary-card">
+                    <span class="summary-label">Jumlah Transaksi</span>
+                    <span class="summary-value" id="transactionCount">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Penanda Batas Pengeluaran -->
+        <div class="spending-limit">
+            <h3>Batas Pengeluaran</h3>
+            <div class="limit-input">
+                <input type="number" id="limitAmount" placeholder="Masukkan batas bulanan (opsional)">
+                <button id="setLimitBtn" class="btn-secondary">Set Limit</button>
+            </div>
+            <div class="limit-display" id="limitDisplay">
+                <p>Batas pengeluaran: <span id="limitAmountDisplay">Tidak diatur</span></p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <p id="limitStatus" class="limit-status">---</p>
+            </div>
+        </div>
+
+        <!-- Tombol Dark Mode -->
+        <div class="theme-toggle">
+            <button id="darkModeToggle" class="btn-icon">
+                🌓
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
